@@ -52,11 +52,11 @@ DQN 에이전트는 ISI 방지와 전송 효율 최대화 사이의 최적점을
 * **성능 향상:** 테스트 스텝에서 에이전트는 보수적인 기준치(DS의 3배)보다 짧은 CP를 설정하여 오버헤드를 적극적으로 줄였습니다. 그 결과, 이론적 기준 대비 평균 약 1.8배 높은 Spectral Efficiency (SE)와 향상된 전력 효율을 달성하였습니다.
 
 <img width="1595" height="936" alt="image" src="https://github.com/user-attachments/assets/f118e2f1-5c1f-4e4a-8149-63148690bacf" />
-*(그림 4. DQN 기반 적응형 CP 알고리즘 성능 대시보드 - 에피소드별 학습 보상 및 테스트 스텝별 SE, 전력 효율 비교)*
+*(그림 4. DQN 기반 적응형 CP 알고리즘 성능 대시보드_에피소드별 학습 보상 및 테스트 스텝별 SE, 전력 효율 비교_v1 기준)*
 
 <br><br>
 <img width="2984" height="2165" alt="adaptive_cp_dashboard" src="https://github.com/user-attachments/assets/529f07d4-7877-48ec-9256-733da1c8fd4e" />
-*(그림 5. DQN 기반 적응형 CP 알고리즘 성능 대시보드 - v4 기준)*
+*(그림 5. DQN 기반 적응형 CP 알고리즘 성능 대시보드_v4 기준)*
 
 ## 4. 설치 및 실행 가이드 (Getting Started)
 
