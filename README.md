@@ -15,7 +15,7 @@ High-speed mobility in an NLOS environment To maintain communication continuity 
 * **고정형 CP의 한계:** 기존 OFDM 시스템은 ISI 완화를 위해 고정된 길이의 CP를 사용합니다. 하지만 CP가 DS보다 짧으면 ISI를 제거하지 못하고, 반대로 과도하게 길면 CP 오버헤드로 인해 유효 데이터 전송 효율이 급감하는 상충 관계(Trade-off)가 발생합니다.
 
 <img width="699" height="554" alt="image" src="https://github.com/user-attachments/assets/440a0dc4-d364-4126-86b0-d46e1754145d" />
-*(그림 1. 도심 환경에서의 Tx와 Rx 간 통신 경로 및 Multipath 현상)*
+<br>*(그림 1. 도심 환경에서의 Tx와 Rx 간 통신 경로 및 Multipath 현상)*
 
 <br><br>
 
