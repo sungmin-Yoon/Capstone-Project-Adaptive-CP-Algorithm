@@ -54,6 +54,10 @@ DQN 에이전트는 ISI 방지와 전송 효율 최대화 사이의 최적점을
 <img width="1595" height="936" alt="image" src="https://github.com/user-attachments/assets/f118e2f1-5c1f-4e4a-8149-63148690bacf" />
 *(그림 4. DQN 기반 적응형 CP 알고리즘 성능 대시보드 - 에피소드별 학습 보상 및 테스트 스텝별 SE, 전력 효율 비교)*
 
+<br><br>
+<img width="2984" height="2165" alt="adaptive_cp_dashboard" src="https://github.com/user-attachments/assets/529f07d4-7877-48ec-9256-733da1c8fd4e" />
+*(그림 5. DQN 기반 적응형 CP 알고리즘 성능 대시보드 - v4 기준)*
+
 ## 4. 설치 및 실행 가이드 (Getting Started)
 
 ### Prerequisites
