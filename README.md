@@ -14,12 +14,12 @@ High-speed mobility in an NLOS environment To maintain communication continuity 
 * **다중 경로 페이딩과 ISI 발생:** 도심 환경 등에서 전파의 반사, 회절로 인해 다중 경로 컴포넌트(MPC)가 수신기에 도달하며, 이는 Delay Spread(DS)를 증가시킵니다. DS가 증가하면 심볼 간 간섭(ISI)이 발생하여 결과적으로 Bit Error Rate (BER) 증가 및 SINR 저하로 이어집니다.
 * **고정형 CP의 한계:** 기존 OFDM 시스템은 ISI 완화를 위해 고정된 길이의 CP를 사용합니다. 하지만 CP가 DS보다 짧으면 ISI를 제거하지 못하고, 반대로 과도하게 길면 CP 오버헤드로 인해 유효 데이터 전송 효율이 급감하는 상충 관계(Trade-off)가 발생합니다.
 
-<img width="1329" height="794" alt="image" src="https://github.com/user-attachments/assets/656d1499-2ee5-4fae-a7ae-3b920d1b6de4" />
+!<img width="1329" height="794" alt="image" src="https://github.com/user-attachments/assets/656d1499-2ee5-4fae-a7ae-3b920d1b6de4" />
 *(그림 1. 도심 환경에서의 Tx와 Rx 간 통신 경로 및 Multipath 현상)*
 
-<br>
 
-<img width="419" height="396" alt="image" src="https://github.com/user-attachments/assets/b56b0def-900f-4d10-b94d-f6c0c739b3fd" />
+
+!<img width="419" height="396" alt="image" src="https://github.com/user-attachments/assets/b56b0def-900f-4d10-b94d-f6c0c739b3fd" />
 *(그림 2. DS 증가에 따른 ISI 발생 개념도)*
 
 ## 2. 시스템 핵심 아키텍처
