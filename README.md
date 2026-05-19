@@ -59,7 +59,7 @@ DQN 에이전트는 ISI 방지와 전송 효율 최대화 사이의 최적점을
 * Python 3.11
 * PyTorch, NumPy, SciPy, Matplotlib
 
-# Repository Structure
+### Repository Structure
 env.py: 강화학습 채널 환경 생성 및 상태 전이 물리 연산
 
 DQN.py: PyTorch 기반 DQN 신경망 모델 구조
@@ -68,14 +68,14 @@ train.py: 에이전트 학습 진행 및 가중치 저장
 
 test.py: 학습된 모델을 활용한 평가 및 성능 대시보드 시각화
 
-# 환경 변수 설정
+### 환경 변수 설정
 python env.py
 
-# DQN 모델 구축
+### DQN 모델 구축
 python DQN.py
 
-# 모델 학습 실행
+### 모델 학습 실행
 python train.py
 
-# 학습된 모델 성능 평가 및 시각화
+### 학습된 모델 성능 평가 및 시각화
 python test.py
