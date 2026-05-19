@@ -17,6 +17,7 @@ High-speed mobility in an NLOS environment To maintain communication continuity 
 <img width="1329" height="794" alt="image" src="https://github.com/user-attachments/assets/656d1499-2ee5-4fae-a7ae-3b920d1b6de4" />
 *(그림 1. 도심 환경에서의 Tx와 Rx 간 통신 경로 및 Multipath 현상)*
 
+<br>
 
 <img width="419" height="396" alt="image" src="https://github.com/user-attachments/assets/b56b0def-900f-4d10-b94d-f6c0c739b3fd" />
 *(그림 2. DS 증가에 따른 ISI 발생 개념도)*
