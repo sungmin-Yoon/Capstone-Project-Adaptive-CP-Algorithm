@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
+import seaborn as sns
 
 from env import AdaptiveCPEnv
 from DQN import DQN
@@ -38,6 +39,9 @@ C_MA       = "#e6550d"   # 주황 — Moving average
 # ═══════════════════════════════════════════════════════════════════════════
 def setup_font():
     """OS별 한글 폰트를 자동 감지하여 matplotlib에 적용"""
+    # ── Seaborn 테마 먼저 적용 (whitegrid + font_scale로 논문급 느낌) ──
+    sns.set_theme(style="whitegrid", palette="deep", font_scale=1.2)
+
     candidates = {
         "Windows": ["Malgun Gothic", "NanumGothic", "Gulim"],
         "Darwin":  ["AppleGothic", "NanumGothic", "Helvetica"],
@@ -49,7 +53,7 @@ def setup_font():
         if font in installed:
             matplotlib.rcParams["font.family"] = font
             break
-    # 마이너스 기호 깨짐 방지
+    # 마이너스 기호 깨짐 방지 (seaborn 이후에도 유지)
     matplotlib.rcParams["axes.unicode_minus"] = False
 
 
@@ -89,6 +93,7 @@ def new_fig(title: str, antenna_label: str) -> tuple:
     fig, ax = plt.subplots(figsize=(10, 6))
     fig.suptitle(title, fontsize=14, fontweight="bold", y=0.98)
     add_footer(fig, antenna_label)
+    sns.despine(ax=ax)   # 상단·우측 스파인 제거
     return fig, ax
 
 
@@ -116,7 +121,7 @@ def chart_01_training(antenna_label: str):
     ax.set_xlabel("Episode", fontsize=12)
     ax.set_ylabel("Total Reward", fontsize=12)
     ax.tick_params(labelsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
+    sns.despine(ax=ax)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "01_training_reward.png")
 
@@ -131,7 +136,6 @@ def chart_02_step_reward(steps, step_rewards, antenna_label: str):
     ax.set_ylabel("Reward", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "02_step_reward.png")
 
@@ -145,7 +149,6 @@ def chart_03_sigma_ds(steps, sigma_ds_list, antenna_label: str):
     ax.set_ylabel("Delay Spread (ns)", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "03_sigma_ds.png")
 
@@ -164,7 +167,6 @@ def chart_04_cp_comparison(steps, theo_cp_list, fixed_cp_list,
     ax.set_ylabel("CP Length (ns)", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "04_cp_comparison.png")
 
@@ -183,7 +185,6 @@ def chart_05_se_comparison(steps, theo_se_list, fixed_se_list,
     ax.set_ylabel("SE (bps/Hz)", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "05_se_comparison.png")
 
@@ -204,7 +205,6 @@ def chart_06_power_efficiency(steps, theo_power_list, fixed_power_list,
     ax.set_ylabel("Efficiency (%)", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "06_power_efficiency.png")
 
@@ -231,7 +231,6 @@ def chart_07_cp_ratio(steps, cp_sigma_ratio, theo_cp_list,
     ax.set_ylabel("CP / σ_DS", fontsize=12)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=9)
-    ax.grid(True, linestyle="--", alpha=0.4)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "07_cp_sigma_ratio.png")
 
@@ -256,7 +255,9 @@ def chart_08_avg_se(theo_se_list, fixed_se_list,
     ax.set_ylabel("Mean SE (bps/Hz)", fontsize=12)
     ax.tick_params(labelsize=11)
     ax.set_ylim(0, max(mean_se) * 1.35)
-    ax.grid(True, linestyle="--", alpha=0.4, axis="y")
+    ax.yaxis.grid(True)
+    ax.set_axisbelow(True)
+    sns.despine(ax=ax)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "08_avg_se_summary.png")
 
@@ -294,7 +295,9 @@ def chart_09_nlos_se(theo_se_list, fixed_se_list, adapt_se_list,
     ax.tick_params(axis="x", labelsize=10)
     ax.tick_params(axis="y", labelsize=10)
     ax.set_ylim(0, max(means) * 1.3)
-    ax.grid(True, linestyle="--", alpha=0.4, axis="y")
+    ax.yaxis.grid(True)
+    ax.set_axisbelow(True)
+    sns.despine(ax=ax)
     fig.tight_layout(rect=[0, 0.03, 1, 0.96])
     save_fig(fig, "09_nlos_se_comparison.png")
 
@@ -324,7 +327,6 @@ def chart_summary_top4(steps, adapt_se_list, fixed_se_list, theo_se_list,
     ax.set_xlabel("Episode", fontsize=11)
     ax.set_ylabel("Total Reward", fontsize=11)
     ax.tick_params(labelsize=10)
-    ax.grid(True, linestyle="--", alpha=0.4)
 
     # ── 우상: SE 비교 ────────────────────────────────────────────────────
     ax = axs[0, 1]
@@ -341,7 +343,6 @@ def chart_summary_top4(steps, adapt_se_list, fixed_se_list, theo_se_list,
     ax.set_ylabel("SE (bps/Hz)", fontsize=11)
     ax.tick_params(labelsize=10)
     ax.legend(fontsize=9)
-    ax.grid(True, linestyle="--", alpha=0.4)
 
     # ── 좌하: 평균 SE 바 ──────────────────────────────────────────────────
     ax = axs[1, 0]
@@ -354,17 +355,18 @@ def chart_summary_top4(steps, adapt_se_list, fixed_se_list, theo_se_list,
                 bar.get_height() + 0.01,
                 f"{val:.3f}", ha="center", va="bottom",
                 fontsize=11, fontweight="bold")
-    improve = (adapt_se_mean / fixed_se_mean - 1.0) * 100.0
-    ax.annotate(f"+{improve:.0f}%\nvs Fixed CP",
-                xy=(2, adapt_se_mean),
-                xytext=(1.55, adapt_se_mean * 0.65),
-                fontsize=9, color=C_ADAPTIVE, fontweight="bold",
-                arrowprops=dict(arrowstyle="->", color=C_ADAPTIVE, lw=1.4))
+    #improve = (adapt_se_mean / fixed_se_mean - 1.0) * 100.0
+    #ax.annotate(f"+{improve:.0f}%\nvs Fixed CP",
+    #            xy=(2, adapt_se_mean),
+    #            xytext=(1.55, adapt_se_mean * 0.65),
+    #            fontsize=9, color=C_ADAPTIVE, fontweight="bold",
+    #            arrowprops=dict(arrowstyle="->", color=C_ADAPTIVE, lw=1.4))
     ax.set_title("Average SE Summary", fontsize=12, fontweight="bold")
     ax.set_ylabel("Mean SE (bps/Hz)", fontsize=11)
     ax.tick_params(labelsize=10)
     ax.set_ylim(0, max(means) * 1.35)
-    ax.grid(True, linestyle="--", alpha=0.4, axis="y")
+    ax.yaxis.grid(True)
+    ax.set_axisbelow(True)
 
     # ── 우하: Normal/NLOS SE ──────────────────────────────────────────────
     ax = axs[1, 1]
@@ -393,7 +395,12 @@ def chart_summary_top4(steps, adapt_se_list, fixed_se_list, theo_se_list,
     ax.tick_params(axis="x", labelsize=9)
     ax.tick_params(axis="y", labelsize=10)
     ax.set_ylim(0, max(nlos_means) * 1.3)
-    ax.grid(True, linestyle="--", alpha=0.4, axis="y")
+    ax.yaxis.grid(True)
+    ax.set_axisbelow(True)
+
+    # 모든 서브플롯에 despine 적용
+    for a in axs.flat:
+        sns.despine(ax=a)
 
     fig.tight_layout(rect=[0, 0.0, 1, 0.96])
     save_fig(fig, "summary_top4.png")
