@@ -428,7 +428,7 @@ Adaptive SE 향상폭은 M = 256에서 +132.3%로 가장 크고, M = 16에서 +1
 ### 8.2 SINR 역전 현상 (Fixed > Adaptive)
 
 Fixed CP(75 ns)의 SINR이 Adaptive CP(~35–43 ns)보다 높게 나오는 것은 정상적인 결과이다.  
-Fixed CP가 σ_DS의 약 2.2–2.8배로 유지되어 ISI가 거의 없는 반면, Adaptive CP는 의도적으로 CP를 줄여 SE를 높이는 대신 일부 ISI를 허용하기 때문이다.  
+Fixed CP가 σ_DS의 약 2.2–2.8배로 유지되어 ISI가 거의 없는 반면, Adaptive CP는 의도적으로 CP를 줄여 SE를 높이는 대신 ISI 안전마진이 줄어들기 때문이다.  
 이 역전이 바로 **"SE ↑ vs SINR/BER ↓"** 트레이드오프의 시각적 표현이다.
 
 ---
